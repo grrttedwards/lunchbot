@@ -47,7 +47,7 @@ def bot_parse(response):
                     reply = commands[keyword]
 
                 if keyword == "help":
-                    pass
+                    reply = "Hi I'm lunchbot. I reset every morning.\n" + reply
                 elif keyword == "where":
                     reply = reply.replace(";;;;;", where_to_eat)
                 elif keyword == "orders":
