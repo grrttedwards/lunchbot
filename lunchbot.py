@@ -1,6 +1,8 @@
 import time
 import os
 import schedule
+import logging
+
 from slackclient import SlackClient
 
 token = os.environ["SLACK_TOKEN"]
@@ -87,7 +89,7 @@ def who_said(response):
 
 def reset_job():
     orders.clear()
-    print("cleared orders at 8:00 utc")
+    logging.info("cleared orders at 8:00 utc")
 
 
 def main():
@@ -98,13 +100,14 @@ def main():
         while True:
             response = sc.rtm_read()
             if response:
-                print(response)
+                logging.info(response)
                 bot_parse(response)
             schedule.run_pending()
             time.sleep(1)
     else:
-        print("Connection Failed, invalid token?")
+        logging.error("Connection Failed")
 
 
 if __name__ == "__main__":
     main()
+    
