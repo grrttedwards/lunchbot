@@ -64,6 +64,7 @@ def bot_parse(response):
                     who = who_said(data)
                     lunch = command
                     reply = "Hi, " + who + ". Putting you down for: *" + lunch + "*"
+                    who = who.replace("@","")
                     orders[who] = lunch
 
                 sc.api_call("chat.postMessage", as_user="true", channel=test_room, text=reply)
