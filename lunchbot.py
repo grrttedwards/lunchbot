@@ -28,10 +28,9 @@ def bot_parse(response):
     reply = ""
     for data in response:
 
-        if "type" not in data.keys():
+        if "type" not in data.keys() or "text" not in data.keys():
             continue
         if data["type"] == "message":
-
             msg_text = data["text"]
 
             if "<@U1K9SPCD7>" in msg_text:
