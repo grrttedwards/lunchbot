@@ -1,7 +1,6 @@
 import time
 import os
 import schedule
-import logging
 
 from slackclient import SlackClient
 
