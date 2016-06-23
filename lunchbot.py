@@ -94,18 +94,24 @@ def reset_job():
 
 def main():
 
+    logger = logging.getLogger("lunchbot")
+    hdlr = logging.FileHandler('/var/tmp/lunchbot.log')
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
+
     schedule.every().day.at("8:00").do(reset_job)
 
     if sc.rtm_connect():
         while True:
             response = sc.rtm_read()
             if response:
-                logging.info(response)
+                logger.info(response)
                 bot_parse(response)
             schedule.run_pending()
             time.sleep(1)
     else:
-        logging.error("Connection Failed")
+        logger.error("Connection Failed")
 
 
 if __name__ == "__main__":
