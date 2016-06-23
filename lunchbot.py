@@ -89,16 +89,10 @@ def who_said(response):
 
 def reset_job():
     orders.clear()
-    logging.info("cleared orders at 8:00 utc")
+    print("cleared orders at 8:00 utc")
 
 
 def main():
-
-    logger = logging.getLogger("lunchbot")
-    hdlr = logging.FileHandler('/var/tmp/lunchbot.log')
-    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-    hdlr.setFormatter(formatter)
-    logger.addHandler(hdlr)
 
     schedule.every().day.at("8:00").do(reset_job)
 
@@ -106,12 +100,12 @@ def main():
         while True:
             response = sc.rtm_read()
             if response:
-                logger.info(response)
+                print(response)
                 bot_parse(response)
             schedule.run_pending()
             time.sleep(1)
     else:
-        logger.error("Connection Failed")
+        print("Connection Failed")
 
 
 if __name__ == "__main__":
