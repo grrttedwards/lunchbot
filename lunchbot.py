@@ -4,9 +4,10 @@ import schedule
 
 from slackclient import SlackClient
 
+# consume slack API creds from the host environment
 token = os.environ["SLACK_TOKEN"]
-lunch_room = "C1JF7S0BB"
-test_room = "C1K95FJ12"
+lunch_room = "insert_room_id"
+test_room = "insert_test_room"
 
 where_to_eat = "somewhere"
 orders = {}
@@ -32,6 +33,7 @@ def bot_parse(response):
         if data["type"] == "message":
             msg_text = data["text"]
 
+            # @U1K9SPCD7 was lunchbot's specific user ID in the original slack this was written for
             if "<@U1K9SPCD7>" in msg_text:
                 command = get_command(msg_text)
 
@@ -72,6 +74,7 @@ def get_command(msg):
     breakdown = msg.split()
     lunch = ""
     for i in range(len(breakdown)):
+        # @U1K9SPCD7 was lunchbot's specific user ID in the original slack this was written for
         if "<@U1K9SPCD7>" in breakdown[i]:
             lunch = breakdown[i+1:]
 
