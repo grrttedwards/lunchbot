@@ -3,6 +3,10 @@ Slack bot for managing lunch orders
 
 Extremely crude, yet nice 'n functional.
 
+### First,
+`pip install slackclient schedule`
+
+### Then,
 Type a message to `@lunchbot` along with any of the following:
 - `help`  - gives you usage help!
 - `where` - (this doesn't really do anything)
@@ -11,4 +15,5 @@ Type a message to `@lunchbot` along with any of the following:
 
 anything else is considered a lunch order!
 
-lunchbot is always happy to be alive.
+### As Always,
+lunchbot is happy to be alive.
