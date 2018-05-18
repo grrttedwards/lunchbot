@@ -4,7 +4,9 @@ Slack bot for managing lunch orders
 Extremely crude, yet nice 'n functional.
 
 ### First,
-`pip install slackclient schedule`
+```
+pip install slackclient schedule
+```
 
 ### Then,
 Type a message to `@lunchbot` along with any of the following:
